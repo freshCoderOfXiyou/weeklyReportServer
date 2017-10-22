@@ -7,7 +7,7 @@ const chalk = require("chalk")
 const msgCk = chalk.green
 const errCk = chalk.bold.red
 const warnCk = chalk.yellow
-const keyCk = chalk.bgCyan.white
+const keyCk = chalk.bgRed.white
 // connect to mongodb databse
 mongoose.connect("mongodb://127.0.0.1:27017/blog");
 
@@ -41,5 +41,37 @@ router.get("/",(req,res,next)=>{
 		}
 	})
 })	
+
+router.post("/register",(req,res,next)=>{
+	console.log(req.body)
+	userModel.create([req.body],(err,doc)=>{
+		if (err) {
+			console.log(errCk("has happend an err at create an doc at api_register"))
+		}else{
+			console.log(msgCk("success create an doc at api_register"))
+			res.json("back data")		
+		}
+	})
+})
+
+router.post("/load",(req,res,next)=>{
+	console.log(req.body)
+	userModel.findOne(req.body,(err,doc)=>{
+		if (err) {
+			console.log(errCk("has happend an err at find an doc at api_register"))
+			
+		}else{
+			console.log(msgCk("success find an doc at api_register"))
+			console.log(doc)
+			
+			if (doc === null) {
+				res.json({"result":"0"})	
+			}else{
+				res.json({"result":"1"})	
+			}
+		}
+	})
+})
+
 
 module.exports = router;
