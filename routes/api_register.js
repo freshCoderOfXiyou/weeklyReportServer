@@ -12,15 +12,15 @@ const keyCk = chalk.bgRed.white
 mongoose.connect("mongodb://127.0.0.1:27017/blog");
 
 mongoose.connection.on("connected",()=>{
-	console.log(keyCk("server has connected to mongodb 127.0.0.1:27017"))
+	console.log(keyCk("load server has connected to mongodb 127.0.0.1:27017"))
 })
 
 mongoose.connection.on("error",()=>{
-	console.log(errCk("server has happend an error when connected to mongodb at 127.0.0.1:27017"))
+	console.log(errCk("load server has happend an error when connected to mongodb at 127.0.0.1:27017"))
 })
 
 mongoose.connection.on("disconnected",()=>{
-	console.log(keyCk("server has disconnected to mongoodb at 127.0.0.1:27017"))
+	console.log(keyCk("load server has disconnected to mongoodb at 127.0.0.1:27017"))
 })
 
 router.get("/",(req,res,next)=>{
@@ -47,9 +47,10 @@ router.post("/register",(req,res,next)=>{
 	userModel.create([req.body],(err,doc)=>{
 		if (err) {
 			console.log(errCk("has happend an err at create an doc at api_register"))
+			data.json({"register":"0"})
 		}else{
 			console.log(msgCk("success create an doc at api_register"))
-			res.json("back data")		
+			res.json({"register":"1"})		
 		}
 	})
 })
