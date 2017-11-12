@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var apiRegister = require("./routes/api_register")
 var apiWork = require("./routes/api_work")
+var apiColumn = require("./routes/api_column")
 
 var app = express();
 
@@ -28,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use("/apiregister" , apiRegister);
-app.use("/work" , apiWork)
+app.use("/work" , apiWork);
+app.use("/column" , apiColumn);
 
 
 

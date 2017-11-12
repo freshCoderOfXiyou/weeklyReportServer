@@ -5,7 +5,7 @@ var userModel = require("../models/user");
 // project using chalk for colorful output at terminal
 const chalk = require("chalk")
 const msgCk = chalk.green
-const errCk = chalk.bold.red
+const errCk = chalk.bold.blue
 const warnCk = chalk.yellow
 const keyCk = chalk.bgRed.white
 // connect to mongodb databse
