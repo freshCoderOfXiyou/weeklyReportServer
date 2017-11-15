@@ -40,17 +40,17 @@ router.get("/",(req,res,next)=>{
 			console.log(msgCk("has create an doc suc"))
 		}
 	})
-})	
+})	 
 
 router.post("/register",(req,res,next)=>{
 	console.log(req.body)
 	userModel.create([req.body],(err,doc)=>{
 		if (err) {
 			console.log(errCk("has happend an err at create an doc at api_register"))
-			data.json({"register":"0"})
+			data.json({"register":"0","msg":"注册失败"})
 		}else{
 			console.log(msgCk("success create an doc at api_register"))
-			res.json({"register":"1"})		
+			res.json({"register":"1","msg":"注册成功"})		
 		}
 	})
 })
